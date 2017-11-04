@@ -1,0 +1,22 @@
+Andela_assessment
+----------------------------------------
+This project is for the andela ALC 2.0 inermediate assessment
+The project is made up of two parts 
+
+  1. An API to perform basic CRUD operations using nodejs, Express framework and a Mysql 
+    databas.
+  2. The webapp which consumes the API.built with nodejs, express and ejs 
+  
+----------------------------------------------------------------------------------
+To test;
+1. clone this repo
+2. cd into webapi
+3. $ npm install 
+4. $ npm intall nodemon (optional)
+5. $ node server.js //to start the api 
+
+cd into webapp and carryout the same steps 3  to 5
+
+the webapp should be runing on http://localhost:5000/
+
+---------------------------------------------------------------------------------
