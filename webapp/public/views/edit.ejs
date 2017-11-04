@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="...stylesheet" href="views/css/student_details.css">
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="...views/js/studentdetails.js"></script>
+<% details.forEach(function(details, index) { %>
+     
+<title><%= details.student_name %> department of <%= details.dept_name %>  </title>
+
+
+     <% }) %>
+   
+  <style>
+  
+    body { background-color: #ecedec; 
+         }
+  </style>
+  </head>
+ <body>
+
+  <% include ./includes/navbar %>
+  <br><br><br><br><br><br>
+  
+
+ <div class="container">
+  <% details.forEach(function(details, index) { %>
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+           
+<p class=" text-info"><script type="text/javascript"> document.write(getDateTime()); </script></p>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"> Editing <%= details.title %> <%= details.student_name %> details</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://tse1.mm.bing.net/th?id=OIP.Pam45SDu_592KDjpjkQ9NQEsEs&pid=15.1"> </div>
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+          <form action= "/student/update"  method="post" id = "request">
+                    <tbody>
+
+                    <tr>
+                        <td><b>Name:<b></td>
+                        <td><input type="text" class="form-control" name= "stuName" value="<%= details.student_name %>" />  </td>
+                      </tr>
+
+                      <tr>
+                        <td><b>Matric Num<b></td>
+          <td><input type="text" class="form-control" name= "" value="17/0023<%=details.student_id %>" disabled />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td><b>Department:<b></td>
+                        <td><input type="text" class="form-control" name= "" value="<%= details.dept_name %>" disabled />  </td>
+                      </tr>
+                      <tr>
+                        <td><b>Admission date:<b></td>
+                        <td><input type="text" class="form-control" name= "" value="<%= details.Admission_date %>" disabled /></td>
+                      </tr>
+                      <tr>
+                        <td><b>Date of Birth<b></td>
+                        <td><input type="text" class="form-control" name= "" value="<%= details.DOB %> " disabled /></td>
+                      </tr>
+                   
+                        
+                      <tr>
+                        <td><b>Gender<b></td>
+                        <td><input type="text" class="form-control" name= "" value="<%= details.sex %> " disabled /></td>
+                      </tr>
+                        <tr>
+                        <td><b>Address<b></td>
+                        <td><input type="text" class="form-control" name= "address" value="<%= details.address %> "  /></td>
+                      </tr>
+                      <tr>
+                        <td><b>Email<b></td>
+                        <td><input type="text" class="form-control" name= "email" value="<%= details.Email %>" />
+                        </td>
+                      </tr>
+                        <td><b>Phone Number<b></td>
+                        <td><input type="text" class="form-control" name= "phone" value="<%= details.phone %>" /></td>
+                           
+                      </tr>
+
+                      </tr>
+                        <td><b>Nationality<b></td>
+                  <td><input type="text" class="form-control" name= "" value="<%= details.nationality %>" disabled /></td>
+                           
+                      </tr>
+                     </tr>
+                        <td><b>State and LGA<b></td>
+                <td><input type="text" class="form-control" name= "" value="<%= details.lga %> , <%= details.state %>" disabled /></td>
+                           
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br>
+                  <br>
+                
+                </div>
+              </div>
+            </div>
+          <div class="panel-footer">
+      
+      <input type="hidden" class="form-control" name= "stuId" value="<%= details.student_id %>"  />
+      <button type="submit" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-ok"></i> update</button></form>
+      <br>       
+                    
+            </div>
+           
+          </div>
+        </div>
+      </div>
+       <% }) %>
+    </div>
+   
+<% include ./includes/footer %>
+</body>
+</html>

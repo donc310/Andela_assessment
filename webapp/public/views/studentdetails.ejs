@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="views/css/student_details.css">
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="views/js/studentdetails.js"></script>
+<% details.forEach(function(details, index) { %>
+     
+<title><%= details.student_name %> department of <%= details.dept_name %>  </title>
+
+
+     <% }) %>
+   
+  <style>
+  
+    body { background-color: #ecedec; 
+         }
+  </style>
+  </head>
+ <body>
+
+  <% include ./includes/navbar %>
+  <br><br><br><br><br><br>
+  
+
+ <div class="container">
+  <% details.forEach(function(details, index) { %>
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+           
+<p class=" text-info"><script type="text/javascript"> document.write(getDateTime()); </script></p>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+            <h3 class="panel-title"> <p id="deleteme"></p> <%= details.title %> <%= details.student_name %></h3><p id="deleteme"></p>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+    <div class="col-md-3 col-lg-12 " align="center"> <img alt="User Pic" src="https://tse1.mm.bing.net/th?id=OIP.Pam45SDu_592KDjpjkQ9NQEsEs&pid=15.1"> </div>
+                <div class=" col-md-9 col-lg-12 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td><b>Matric  Num<b></td>
+                        <td>17/0023<%=details.student_id %></td>
+                      </tr>
+
+                      <tr>
+                        <td><b>Department:<b></td>
+                        <td><%= details.dept_name %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Admission date:<b></td>
+                        <td><%= details.Admission_date %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Date of Birth<b></td>
+                        <td><%= details.DOB %></td>
+                      </tr>
+                   
+                        
+                      <tr>
+                        <td><b>Gender<b></td>
+                        <td><%= details.sex %></td>
+                      </tr>
+                        <tr>
+                        <td><b>Address<b></td>
+                        <td><%= details.address %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Email<b></td>
+                        <td><a href="mailto:<%= details.email %>"><%= details.Email %></a></td>
+                      </tr>
+                        <td><b>Phone Number<b></td>
+                        <td><%= details.phone %></td>
+                           
+                      </tr>
+
+                      </tr>
+                        <td><b>Nationality<b></td>
+                        <td><%= details.nationality %></td>
+                           
+                      </tr>
+                     </tr>
+                        <td><b>State and LGA<b></td>
+                        <td><%= details.lga %> , <%= details.state %></td>
+                           
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br>
+                  <br>
+                
+                </div>
+              </div>
+            </div>
+        <div class="panel-footer"> 
+
+
+          <br> 
+        </div>
+      <div class="col-sm-6">
+      <div class="">
+
+      <form action= "student/edit"  method="post" id = "request">
+      <input type="hidden" class="form-control" name= "stuId" value="<%= details.student_id %>"  />
+      <button type="submit" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>edit</button> 
+      </form>
+       </div>
+            </div>
+
+      <div class="col-sm-6">
+       <div class="">     
+      <form action= "student/delete"  method="post" id = "request">
+      <input type="hidden" class="form-control" name= "stuId" value="<%= details.student_id %>"  />
+      <button   onclick="showdelconfirmation()" id="deletebtn" type="submit" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i>delete</button> 
+      </form>
+     
+                    
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <% }) %>
+    </div>
+   
+<% include ./includes/footer %>
+</body>
+</html>

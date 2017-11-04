@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <title> department listing</title>
+  <style>
+    body {
+      background-color: #ecedec;
+    }
+  </style>
+</head>
+<body>
+<% include ./includes/navbar %>
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1><span class="glyphicon glyphicon-user"></span></h1>
+    <h2>List of students</h2>
+  </div>
+  
+  <div class="row">
+  <% students.forEach(function(students, index) { %>
+    <div class="col-sm-4">
+      <div class="panel">
+
+        <div class="panel-body text-center">
+          <img class="img-circle" src="<%= students.profile_pic %>" />
+        </div>
+        <div class="panel-heading">
+          <h3 class="panel-title">Name: <%= students.student_name %></h3>
+        </div>
+        
+        <div class="panel-footer small">
+          <p><b> Matric Num:</b> 17/0023<%= students.student_id %></p>
+        </div>
+        <div class="panel-footer small">
+          <p> <b> Sex: </b><%= students.sex %></p>
+        </div>
+        <div class="panel-footer small">
+          <p> <b>Date of Admission:</b>  <%= students.Admission_date %></p>
+        </div>
+        <div class="panel-footer small">
+          <p><b> Dept:</b> <%= students.dept_name %>
+        </div>
+        <form action= "/studentdetails"  method="post" id = "request">
+          <input type="hidden" class="form-control" name= "stuId" value="<%= students.student_id %>"  />
+          <button type="submit" class="btn btn-block btn-primary">view student</button> 
+        </form>
+
+      </div>
+    </div>
+  <% }) %>
+  </div>
+</div>
+<% include ./includes/footer %>
+</body>
+</html>

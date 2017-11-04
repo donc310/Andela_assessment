@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <title> Departments </title>
+  <style>
+    body {
+      background-color: #ecedec;
+    }
+  </style>
+</head>
+<body>
+<% include ./includes/navbar %>
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1><span class="glyphicon glyphicon-book"></span></h1>
+    <h2>Emerald International School</h2>
+  </div>
+  
+  <div class="row">
+  <% departments.forEach(function(department, index) { %>
+    <div class="col-sm-4">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><b>Department :</b><%= department.Dept_Name %>  </h3>
+          <br>
+          <h3 class="panel-title"><b>Faculty:</b><%= department.Faculty %>  </h3>
+        </div>
+        <div class="panel-body text-center">
+          <h1> <small></small></h1>
+        </div>
+        <div class="panel-footer small">
+           <p> Dpartment ID : 0412144<%= department.Dept_Id %>. 
+        </div>
+        <div class="panel-footer small">
+          <form action= "/studentlist"  method="post" id = "request">
+          <input type="hidden" class="form-control" name= "deptId" value="<%= department.Dept_Id %>"  />
+          <button type="submit" class="btn btn-block btn-primary">view students</button> 
+          </form>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+  </div>
+</div>
+<% include ./includes/footer %>
+</body>
+</html>
