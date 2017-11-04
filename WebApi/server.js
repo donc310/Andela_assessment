@@ -8,8 +8,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var connection = require("express-myconnection");
-//var Task =require('./routes/Tasks');
-// Routes
+
 
 var Api=require('./routes/api');
 var routes = require('./routes/index');
@@ -22,21 +21,22 @@ app.set('port', (process.env.PORT || 8080));
 
 app.use(connection(mysql, {
 host: "localhost",
-user: "chibuzor",
-password: "chibuzor618",
+user: "",
+password: "",
 database: "emeraldfeild_db"
 },'request'));
 
 console.log(rsaValidation());
 
-//Validate tokens for the API
+//Validate tokens for the API 
+// this would perform aythentication for the api in future development
 var jwtCheck = jwt({
   secret: rsaValidation(),
   algorithms: ['RS256'],
   issuer: "https://YOUR-AUTH0-DOMAIN.auth0.com/",
   audience: 'YOUR-API-IDENTIFIER'
 });
-
+//set a simple view to interface with API
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -52,9 +52,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-
+// main api endpoints
 app.use('/Api',Api);
-//app.use('/Task',Task);
+
 
 
 
