@@ -8,7 +8,7 @@ var request = require('superagent');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'EmeraldField Academy' });
 });
-
+//search students by phone number
 router.get('/search', urlencodedParser,function(req, res){
     if (!req.body) return res.sendStatus(400)
     var phone = req.body;
@@ -34,7 +34,7 @@ router.get('/search', urlencodedParser,function(req, res){
 })
 })
 
-
+// add a new student
 router.get('/new', function(req, res){
     
   res.render('addstudent', { title: 'Add New student data' } );
@@ -81,7 +81,7 @@ router.post('/edit', urlencodedParser,function(req, res){
     })
     
 })
-
+//update a student record using student id 
 router.post('/update', urlencodedParser,function(req, res){
     if (!req.body) return res.sendStatus(400)
     var data = req.body;
@@ -126,20 +126,6 @@ router.post('/delete', urlencodedParser,function(req, res){
       }
     })    
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
